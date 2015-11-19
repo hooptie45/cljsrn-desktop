@@ -40,6 +40,9 @@
 		14D6D7291B2222EF001FB087 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AADF041AC3DB95002390C9 /* libReact.a */; };
 		3DB99D0C1BA0340600302749 /* UIExplorerIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB99D0B1BA0340600302749 /* UIExplorerIntegrationTests.m */; };
 		83636F8F1B53F22C009F943E /* RCTUIManagerScenarioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83636F8E1B53F22C009F943E /* RCTUIManagerScenarioTests.m */; };
+		EDDCDB441BFE0A8B007DEBFF /* ABYContextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDCDB3F1BFE0A8B007DEBFF /* ABYContextManager.m */; };
+		EDDCDB451BFE0A8B007DEBFF /* ABYServer.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDCDB411BFE0A8B007DEBFF /* ABYServer.m */; };
+		EDDCDB461BFE0A8B007DEBFF /* ABYUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDCDB431BFE0A8B007DEBFF /* ABYUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +162,12 @@
 		3DB99D0B1BA0340600302749 /* UIExplorerIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIExplorerIntegrationTests.m; sourceTree = "<group>"; };
 		58005BE41ABA80530062E044 /* RCTTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTTest.xcodeproj; path = ../../Libraries/RCTTest/RCTTest.xcodeproj; sourceTree = "<group>"; };
 		83636F8E1B53F22C009F943E /* RCTUIManagerScenarioTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTUIManagerScenarioTests.m; sourceTree = "<group>"; };
+		EDDCDB3E1BFE0A8B007DEBFF /* ABYContextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABYContextManager.h; path = ambly/ABYContextManager.h; sourceTree = "<group>"; };
+		EDDCDB3F1BFE0A8B007DEBFF /* ABYContextManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABYContextManager.m; path = ambly/ABYContextManager.m; sourceTree = "<group>"; };
+		EDDCDB401BFE0A8B007DEBFF /* ABYServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABYServer.h; path = ambly/ABYServer.h; sourceTree = "<group>"; };
+		EDDCDB411BFE0A8B007DEBFF /* ABYServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABYServer.m; path = ambly/ABYServer.m; sourceTree = "<group>"; };
+		EDDCDB421BFE0A8B007DEBFF /* ABYUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABYUtils.h; path = ambly/ABYUtils.h; sourceTree = "<group>"; };
+		EDDCDB431BFE0A8B007DEBFF /* ABYUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABYUtils.m; path = ambly/ABYUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +390,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				EDDCDB351BFE0A76007DEBFF /* Ambly */,
 				13B07FAE1A68108700A75B9A /* UIExplorer */,
 				1316A21D1AA397F400C0188E /* Libraries */,
 				143BC57C1B21E18100462512 /* UIExplorerUnitTests */,
@@ -400,6 +410,19 @@
 				143BC5951B21E3E100462512 /* UIExplorerIntegrationTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EDDCDB351BFE0A76007DEBFF /* Ambly */ = {
+			isa = PBXGroup;
+			children = (
+				EDDCDB3E1BFE0A8B007DEBFF /* ABYContextManager.h */,
+				EDDCDB3F1BFE0A8B007DEBFF /* ABYContextManager.m */,
+				EDDCDB401BFE0A8B007DEBFF /* ABYServer.h */,
+				EDDCDB411BFE0A8B007DEBFF /* ABYServer.m */,
+				EDDCDB421BFE0A8B007DEBFF /* ABYUtils.h */,
+				EDDCDB431BFE0A8B007DEBFF /* ABYUtils.m */,
+			);
+			name = Ambly;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -639,6 +662,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				EDDCDB461BFE0A8B007DEBFF /* ABYUtils.m in Sources */,
+				EDDCDB451BFE0A8B007DEBFF /* ABYServer.m in Sources */,
+				EDDCDB441BFE0A8B007DEBFF /* ABYContextManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
