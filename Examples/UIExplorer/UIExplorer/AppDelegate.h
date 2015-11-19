@@ -14,7 +14,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate, NSFileManagerDelegate>
 
 @property (strong, nonatomic) NSWindow *window;
 @property(assign) Class<NSWindowRestoration> restorationClass;

@@ -17,9 +17,70 @@
 #import "RCTBridge.h"
 #import "RCTJavaScriptLoader.h"
 #import "RCTRootView.h"
+#import "RCTContextExecutor.h"
+#import "ABYServer.h"
+#import "ABYContextManager.h"
 #import <Cocoa/Cocoa.h>
 
+
+/**
+ This class exists so that a client-created `JSGlobalContextRef`
+ instance and optional JavaScript thread can be injected
+ into an `RCTContextExecutor`.
+ */
+@interface ABYContextExecutor : RCTContextExecutor
+
+/**
+ Sets the JavaScript thread that will be used when `init`ing
+ an instance of this class. If not set, `[NSThread mainThread]`
+ will be used.
+ 
+ @param thread the thread
+ */
++(void) setJavaScriptThread:(NSThread*)thread;
+
+/**
+ Sets the context that will be used when `init`ing an instance
+ of this class.
+ @param context the context
+ */
++(void) setContext:(JSGlobalContextRef)context;
+
+@end
+
+static NSThread* staticJavaScriptThread = nil;
+static JSGlobalContextRef staticContext;
+
+@implementation ABYContextExecutor
+
+RCT_EXPORT_MODULE()
+
+- (instancetype)init
+{
+  id me = [self initWithJavaScriptThread:(staticJavaScriptThread ? staticJavaScriptThread : [NSThread mainThread])
+                        globalContextRef:staticContext];
+  staticJavaScriptThread = nil;
+  JSGlobalContextRelease(staticContext);
+  return me;
+}
+
++(void) setJavaScriptThread:(NSThread*)thread
+{
+  staticJavaScriptThread = thread;
+}
+
++(void) setContext:(JSGlobalContextRef)context
+{
+  staticContext = JSGlobalContextRetain(context);
+}
+
+@end
+
 @interface AppDelegate() <RCTBridgeDelegate>
+
+@property (strong, nonatomic) ABYServer* replServer;
+@property (strong, nonatomic) ABYContextManager* contextManager;
+@property (strong, nonatomic) NSURL* compilerOutputDirectory;
 
 @end
 
@@ -57,14 +118,32 @@
 - (void)applicationDidFinishLaunching:(__unused NSNotification *)aNotification
 {
 
-  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self
-                                            launchOptions:nil];
+  // Set up the ClojureScript compiler output directory
+  self.compilerOutputDirectory = [[self privateDocumentsDirectory] URLByAppendingPathComponent:@"cljs-out"];
+  
+  // Set up our context manager
+  self.contextManager = [[ABYContextManager alloc] initWithContext:JSGlobalContextCreate(NULL)
+                                           compilerOutputDirectory:self.compilerOutputDirectory];
+  
+  // Inject our context using ABYContextExecutor
+  [ABYContextExecutor setContext:self.contextManager.context];
+
+  // Set React Native to intstantiate our ABYContextExecutor, doing this by slipping the executorClass
+  // assignement between alloc and initWithBundleURL:moduleProvider:launchOptions:
+  RCTBridge *bridge = [RCTBridge alloc];
+  bridge.executorClass = [ABYContextExecutor class];
+  bridge = [bridge initWithDelegate:self
+                      launchOptions:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"UIExplorerApp"
                                             initialProperties:nil];
 
-
+  // Set up to be notified when the React Native UI is up
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(contentDidAppear)
+                                               name:RCTContentDidAppearNotification
+                                             object:rootView];
 
   [self.window setContentView:rootView];
 }
@@ -116,5 +195,97 @@
                             onComplete:loadCallback];
 }
 
+- (NSURL *)privateDocumentsDirectory
+{
+  NSURL *libraryDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] lastObject];
+  
+  return [libraryDirectory URLByAppendingPathComponent:@"Private Documents"];
+}
+
+- (void)createDirectoriesUpTo:(NSURL*)directory
+{
+  if (![[NSFileManager defaultManager] fileExistsAtPath:[directory path]]) {
+    NSError *error = nil;
+    
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:[directory path]
+                                   withIntermediateDirectories:YES
+                                                    attributes:nil
+                                                         error:&error]) {
+      NSLog(@"Can't create directory %@ [%@]", [directory path], error);
+      abort();
+    }
+  }
+}
+
+-(void)requireAppNamespaces:(JSContext*)context
+{
+  [context evaluateScript:[NSString stringWithFormat:@"goog.require('%@');", [self munge:@"ui-explorer.core"]]];
+}
+
+- (JSValue*)getValue:(NSString*)name inNamespace:(NSString*)namespace fromContext:(JSContext*)context
+{
+  JSValue* namespaceValue = nil;
+  for (NSString* namespaceElement in [namespace componentsSeparatedByString: @"."]) {
+    if (namespaceValue) {
+      namespaceValue = namespaceValue[[self munge:namespaceElement]];
+    } else {
+      namespaceValue = context[[self munge:namespaceElement]];
+    }
+  }
+  
+  return namespaceValue[[self munge:name]];
+}
+
+- (NSString*)munge:(NSString*)s
+{
+  return [[[s stringByReplacingOccurrencesOfString:@"-" withString:@"_"]
+           stringByReplacingOccurrencesOfString:@"!" withString:@"_BANG_"]
+          stringByReplacingOccurrencesOfString:@"?" withString:@"_QMARK_"];
+}
+
+- (void)contentDidAppear
+{
+  // Ensure private documents directory exists
+  [self createDirectoriesUpTo:[self privateDocumentsDirectory]];
+  
+  // Copy resources from bundle "out" to compilerOutputDirectory
+  
+  NSFileManager* fileManager = [NSFileManager defaultManager];
+  fileManager.delegate = self;
+  
+  // First blow away old compiler output directory
+  [fileManager removeItemAtPath:self.compilerOutputDirectory.path error:nil];
+  
+  // Copy files from bundle to compiler output driectory
+  NSString *outPath = [[NSBundle mainBundle] pathForResource:@"out" ofType:nil];
+  [fileManager copyItemAtPath:outPath toPath:self.compilerOutputDirectory.path error:nil];
+  
+  [self.contextManager setUpAmblyImportScript];
+  
+  NSString* mainJsFilePath = [[self.compilerOutputDirectory URLByAppendingPathComponent:@"main" isDirectory:NO] URLByAppendingPathExtension:@"js"].path;
+  
+  NSURL* googDirectory = [self.compilerOutputDirectory URLByAppendingPathComponent:@"goog"];
+  
+  [self.contextManager bootstrapWithDepsFilePath:mainJsFilePath
+                                    googBasePath:[[googDirectory URLByAppendingPathComponent:@"base" isDirectory:NO] URLByAppendingPathExtension:@"js"].path];
+  
+  JSContext* context = [JSContext contextWithJSGlobalContextRef:self.contextManager.context];
+  [self requireAppNamespaces:context];
+  
+  JSValue* initFn = [self getValue:@"init" inNamespace:@"ui-explorer.core" fromContext:context];
+  NSAssert(!initFn.isUndefined, @"Could not find the app init function");
+  [initFn callWithArguments:@[]];
+  
+  // Send a nonsense UI event to cause React Native to load our Om UI
+  RCTRootView* rootView = (RCTRootView*)self.window.contentView;
+  //[rootView.bridge.modules[@"RCTEventDispatcher"] sendInputEventWithName:@"dummy" body:@{@"target": @1}];
+  
+  // Now that React Native has been initialized, fire up our REPL server
+  self.replServer = [[ABYServer alloc] initWithContext:self.contextManager.context
+                               compilerOutputDirectory:self.compilerOutputDirectory];
+  [self.replServer startListening];
+}
+
 @end
+
 

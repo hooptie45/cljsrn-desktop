@@ -1,0 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :osx, '10.11'
+
+pod 'Ambly', :git => 'https://github.com/omcljs/ambly.git'

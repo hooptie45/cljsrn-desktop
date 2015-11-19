@@ -1,0 +1,24 @@
+PODS:
+  - Ambly (0.6.0):
+    - GCDWebServer/WebDAV (~> 3.2.2)
+  - GCDWebServer/Core (3.2.7)
+  - GCDWebServer/WebDAV (3.2.7):
+    - GCDWebServer/Core
+
+DEPENDENCIES:
+  - Ambly (from `https://github.com/omcljs/ambly.git`)
+
+EXTERNAL SOURCES:
+  Ambly:
+    :git: https://github.com/omcljs/ambly.git
+
+CHECKOUT OPTIONS:
+  Ambly:
+    :commit: 1f5c0d83b8fd35f81115530c72878644cb177056
+    :git: https://github.com/omcljs/ambly.git
+
+SPEC CHECKSUMS:
+  Ambly: b5b1cb857487f61137fc45d7eeaa2b456391ddcf
+  GCDWebServer: 76a9540371d5f12f850b32ec7f555dd2d266e543
+
+COCOAPODS: 0.38.2

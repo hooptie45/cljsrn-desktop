@@ -13,6 +13,7 @@
 		038010671BCCAF2500B1BE0C /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 834C36D21AF8DA610019C93C /* libRCTSettings.a */; };
 		03911C6C1BCFFCB7006809D1 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AADF041AC3DB95002390C9 /* libReact.a */; };
 		03911C6D1BCFFCBC006809D1 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13417FEF1AA914B8003F314A /* libRCTText.a */; };
+		0D0950F8D00DC6877718086B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C6CB70A3D43558B5FECDD0 /* libPods.a */; };
 		1300627F1B59179B0043FE5A /* RCTGzipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1300627E1B59179B0043FE5A /* RCTGzipTests.m */; };
 		138D6A181B53CD440074A87E /* RCTShadowViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 138D6A161B53CD440074A87E /* RCTShadowViewTests.m */; };
 		1393D0381B68CD1300E1B601 /* RCTModuleMethodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1393D0371B68CD1300E1B601 /* RCTModuleMethodTests.m */; };
@@ -40,9 +41,8 @@
 		14D6D7291B2222EF001FB087 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14AADF041AC3DB95002390C9 /* libReact.a */; };
 		3DB99D0C1BA0340600302749 /* UIExplorerIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB99D0B1BA0340600302749 /* UIExplorerIntegrationTests.m */; };
 		83636F8F1B53F22C009F943E /* RCTUIManagerScenarioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83636F8E1B53F22C009F943E /* RCTUIManagerScenarioTests.m */; };
-		EDDCDB441BFE0A8B007DEBFF /* ABYContextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDCDB3F1BFE0A8B007DEBFF /* ABYContextManager.m */; };
-		EDDCDB451BFE0A8B007DEBFF /* ABYServer.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDCDB411BFE0A8B007DEBFF /* ABYServer.m */; };
-		EDDCDB461BFE0A8B007DEBFF /* ABYUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EDDCDB431BFE0A8B007DEBFF /* ABYUtils.m */; };
+		ED1846391BFE110700C10B4E /* libAmbly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1846381BFE110700C10B4E /* libAmbly.a */; };
+		ED9826691BFE1485005424E2 /* out in Resources */ = {isa = PBXBuildFile; fileRef = ED9826681BFE1485005424E2 /* out */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,16 +158,16 @@
 		14D6D7091B220AE3001FB087 /* OCMRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMRecorder.h; sourceTree = "<group>"; };
 		14D6D70A1B220AE3001FB087 /* OCMStubRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMStubRecorder.h; sourceTree = "<group>"; };
 		14D6D7101B220EB3001FB087 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		352FEF5982A35731BD5AA000 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		357858F81B28D2C400341EDB /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = ../../Libraries/LinkingIOS/RCTLinking.xcodeproj; sourceTree = "<group>"; };
 		3DB99D0B1BA0340600302749 /* UIExplorerIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIExplorerIntegrationTests.m; sourceTree = "<group>"; };
 		58005BE41ABA80530062E044 /* RCTTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTTest.xcodeproj; path = ../../Libraries/RCTTest/RCTTest.xcodeproj; sourceTree = "<group>"; };
+		74C6CB70A3D43558B5FECDD0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		83636F8E1B53F22C009F943E /* RCTUIManagerScenarioTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTUIManagerScenarioTests.m; sourceTree = "<group>"; };
-		EDDCDB3E1BFE0A8B007DEBFF /* ABYContextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABYContextManager.h; path = ambly/ABYContextManager.h; sourceTree = "<group>"; };
-		EDDCDB3F1BFE0A8B007DEBFF /* ABYContextManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABYContextManager.m; path = ambly/ABYContextManager.m; sourceTree = "<group>"; };
-		EDDCDB401BFE0A8B007DEBFF /* ABYServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABYServer.h; path = ambly/ABYServer.h; sourceTree = "<group>"; };
-		EDDCDB411BFE0A8B007DEBFF /* ABYServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABYServer.m; path = ambly/ABYServer.m; sourceTree = "<group>"; };
-		EDDCDB421BFE0A8B007DEBFF /* ABYUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ABYUtils.h; path = ambly/ABYUtils.h; sourceTree = "<group>"; };
-		EDDCDB431BFE0A8B007DEBFF /* ABYUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ABYUtils.m; path = ambly/ABYUtils.m; sourceTree = "<group>"; };
+		EC9C43F9BF81F43E97410A34 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		ED1846381BFE110700C10B4E /* libAmbly.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAmbly.a; path = "Pods/../build/Debug-iphoneos/libAmbly.a"; sourceTree = "<group>"; };
+		ED9826681BFE1485005424E2 /* out */ = {isa = PBXFileReference; lastKnownFileType = folder; name = out; path = "../../../ui-explorer/target/out"; sourceTree = "<group>"; };
+		EDDCDB7D1BFE0E5C007DEBFF /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,12 +189,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED1846391BFE110700C10B4E /* libAmbly.a in Frameworks */,
 				031631951BDF81F4003A8A7A /* libRCTImage.a in Frameworks */,
 				0357AF381BD28D1E00CEDDCC /* libRCTWebSocket.a in Frameworks */,
 				03911C6D1BCFFCBC006809D1 /* libRCTText.a in Frameworks */,
 				03911C6C1BCFFCB7006809D1 /* libReact.a in Frameworks */,
 				038010671BCCAF2500B1BE0C /* libRCTSettings.a in Frameworks */,
 				038010341BCA7D2A00B1BE0C /* libRCTNetwork.a in Frameworks */,
+				0D0950F8D00DC6877718086B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +381,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6005B9DCA1FBFF0FF5DE952E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED1846381BFE110700C10B4E /* libAmbly.a */,
+				74C6CB70A3D43558B5FECDD0 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6AAA66007F5F142AE140375B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				352FEF5982A35731BD5AA000 /* Pods.debug.xcconfig */,
+				EC9C43F9BF81F43E97410A34 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		834C36CE1AF8DA610019C93C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,13 +410,16 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				EDDCDB351BFE0A76007DEBFF /* Ambly */,
+				ED9826681BFE1485005424E2 /* out */,
+				EDDCDB7D1BFE0E5C007DEBFF /* libxml2.2.tbd */,
 				13B07FAE1A68108700A75B9A /* UIExplorer */,
 				1316A21D1AA397F400C0188E /* Libraries */,
 				143BC57C1B21E18100462512 /* UIExplorerUnitTests */,
 				143BC5961B21E3E100462512 /* UIExplorerIntegrationTests */,
 				14D6D6EA1B2205C0001FB087 /* OCMock */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				6AAA66007F5F142AE140375B /* Pods */,
+				6005B9DCA1FBFF0FF5DE952E /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -410,19 +433,6 @@
 				143BC5951B21E3E100462512 /* UIExplorerIntegrationTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		EDDCDB351BFE0A76007DEBFF /* Ambly */ = {
-			isa = PBXGroup;
-			children = (
-				EDDCDB3E1BFE0A8B007DEBFF /* ABYContextManager.h */,
-				EDDCDB3F1BFE0A8B007DEBFF /* ABYContextManager.m */,
-				EDDCDB401BFE0A8B007DEBFF /* ABYServer.h */,
-				EDDCDB411BFE0A8B007DEBFF /* ABYServer.m */,
-				EDDCDB421BFE0A8B007DEBFF /* ABYUtils.h */,
-				EDDCDB431BFE0A8B007DEBFF /* ABYUtils.m */,
-			);
-			name = Ambly;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,9 +459,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "UIExplorer" */;
 			buildPhases = (
+				A4B282AE90F4A4B6E20FD3C9 /* Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
+				2FCFBB32EBA0CB21D17714D3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -624,6 +636,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				ED9826691BFE1485005424E2 /* out in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +648,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2FCFBB32EBA0CB21D17714D3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4B282AE90F4A4B6E20FD3C9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		004D289A1AAF61C70097A701 /* Sources */ = {
@@ -662,9 +708,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				EDDCDB461BFE0A8B007DEBFF /* ABYUtils.m in Sources */,
-				EDDCDB451BFE0A8B007DEBFF /* ABYServer.m in Sources */,
-				EDDCDB441BFE0A8B007DEBFF /* ABYContextManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -749,6 +792,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 352FEF5982A35731BD5AA000 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -760,12 +804,16 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../React/**",
+					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/UIExplorer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.facebook.internal.uiexplorer.local;
 				PRODUCT_NAME = UIExplorer;
 			};
@@ -773,6 +821,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC9C43F9BF81F43E97410A34 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -783,12 +832,16 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../React/**",
+					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/UIExplorer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.facebook.internal.uiexplorer.local;
 				PRODUCT_NAME = UIExplorer;
 			};
