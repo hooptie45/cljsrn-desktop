@@ -2,7 +2,13 @@
 
 A proof-of-concept demo using [react-native-desktop](https://github.com/ptmt/react-native-desktop) from ClojureScript.
 
+# Blog Post / Demo
+
+[Blog Post with Demo](http://blog.fikesfarm.com/posts/2015-11-19-clojurescript-react-native-desktop.html)
+
 # Running
+
+Note, this stuff was copied from iOS without much change. As a consequence it currently puts some files in `~/Library/Private Documents/cljs-out/`
 
 ### ClojureScript
 1. `cd ui-explorer`
